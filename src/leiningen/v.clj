@@ -25,10 +25,10 @@
 
 (defn cache
   "Cache the effective version for use outside the scope of leiningen evaluation"
-  [project & [dir]]
+  [project & [dir ns-prefix]]
   (let [{{describe :describe} :workspace :keys [version source-paths]} project
         path (str (or dir (first source-paths)) "/version.clj")]
-    (file/cache path version describe)))
+    (file/cache path version describe ns-prefix)))
 
 (defn- update*
   "Returns SCM version updated (newer or same in the case of snapshot) per the supplied operation"

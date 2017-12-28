@@ -1,4 +1,4 @@
-(defproject com.roomkey/lein-v :lein-v
+(defproject gardnervickers/lein-v :lein-v
   :description "A Leiningen plugin to reflect on the SCM workspace of a project"
   :url "https://github.com/roomkey/lein-v"
   :release-tasks [["v" "assert-anchored"]
@@ -21,6 +21,4 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :jvm-opts ["-Djava.io.tmpdir=./tmp"]
-  :repositories [["rk-public" {:url "http://rk-maven-public.s3-website-us-east-1.amazonaws.com/releases/"}]
-                 ["rk-private" {:url "s3://rk-maven/releases/"}]]
   :eval-in-leiningen true)
