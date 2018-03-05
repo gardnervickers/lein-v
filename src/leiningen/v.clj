@@ -100,8 +100,8 @@
 ;; Middleware
 (defn version-from-scm
   [project]
-  (let [v (str (or (version (:v project)) "UNKNOWN"))
-        vk (str (or (:manifest-version-name (:v project)) "Implementation-Version"))]
+  (let [v (str (or (System/getenv "LEIN_V_STATIC") (version (:v project)) "UNKNOWN"))
+        vk (str (or (System/getenv "LEIN_V_STATIC") (:manifest-version-name (:v project)) "Implementation-Version"))]
     (-> project
         (assoc-in [:version] v)
         (assoc-in [:manifest vk] v))))
@@ -113,7 +113,7 @@
 
 (defn dependency-version-from-scm
   [project]
-  (let [v (str (or (version (:v project)) "UNKNOWN"))]
+  (let [v (str (or (System/getenv "LEIN_V_STATIC") (version (:v project)) "UNKNOWN"))]
     (clojure.core/update project
                          :dependencies
                          #(map (partial update-dependency v) %1))))
